@@ -19,6 +19,7 @@ namespace SpartaDungeon
         private item armor;
         private int Clear_Count;
 
+        //각 데이터를 private로 선언 후, 직접 값을 넣는게 아닌 메소드를 통해 값을 받거나 수정
         public void SetLevel(int _Level)
         {
             Level = _Level;
@@ -37,6 +38,10 @@ namespace SpartaDungeon
                 Atk += 0.5f;
                 Def += 1;
             }
+        }
+        public int getClearCount()
+        {
+            return Clear_Count;
         }
         public void setClearCount(int _Clear_Count)
         {
@@ -107,6 +112,10 @@ namespace SpartaDungeon
         {
             return weapon;
         }
+
+        //아이템 장착, 해제 기능
+        //type(방어구or무기)에 따라 각 위치에 장착
+        //판매 혹은 해제할 경우엔 초기화
         public void ManageItem(item _equip)
         {
             if (_equip.type == 0)
@@ -125,6 +134,9 @@ namespace SpartaDungeon
             }
         }
 
+        //아이템 판매 기능
+        //purchased를 false로 바꾸면 더이상 inventory에서 표시되지 않음
+        //판매가격은 구매가격의 85%
         public void SellItem(ref item _item)
         {
             if (armor.Equals(_item))

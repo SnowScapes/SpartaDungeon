@@ -23,8 +23,9 @@ namespace SpartaDungeon
                 new JProperty("DEF", Program.data.GetDef()),
                 new JProperty("HP", Program.data.GetHp()),
                 new JProperty("Gold", Program.data.GetGold()),
-                new JProperty("Armor", Program.data.GetArmor().name == null? null : Program.data.GetArmor().index),
-                new JProperty("Weapon", Program.data.GetWeapon().name == null ? null : Program.data.GetWeapon().index)
+                new JProperty("Armor", Program.data.GetArmor().name == null ? null : Program.data.GetArmor().index),
+                new JProperty("Weapon", Program.data.GetWeapon().name == null ? null : Program.data.GetWeapon().index),
+                new JProperty("ClearCount", Program.data.getClearCount())
                 );
             File.WriteAllText(filePath,userSpec.ToString());
             return true;
@@ -44,6 +45,7 @@ namespace SpartaDungeon
             Program.data.SetDef((int)jsonObject["DEF"]);
             Program.data.SetHp((int)jsonObject["HP"]);
             Program.data.SetGold((int)jsonObject["Gold"]);
+            Program.data.setClearCount((int)jsonObject["ClearCount"]);
             if (int.TryParse((string)jsonObject["Armor"], out idx)) 
             {
                 Program.data.ManageItem(Program.Items[idx]);

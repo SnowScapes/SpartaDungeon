@@ -7,5 +7,6 @@
   "HP": 100,
   "Gold": 1500,
   "Armor": null,
-  "Weapon": null
+  "Weapon": null,
+  "ClearCount": 0
 }
