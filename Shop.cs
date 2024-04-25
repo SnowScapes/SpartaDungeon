@@ -42,23 +42,13 @@ namespace SpartaDungeon
                 purchase = false;
             }
             Console.Write("원하시는 행동을 입력해주세요 : ");
-            string sel = Console.ReadLine();
-            if (sel == "0")
-                return;
-            else if (sel == "1")
+
+            switch(Console.ReadLine())
             {
-                Shop_Buy();
-                goto notvalid;
-            }
-            else if (sel == "2")
-            {
-                Shop_Sell();
-                goto notvalid;
-            }
-            else
-            {
-                NotValid = true;
-                goto notvalid;
+                case "0": return;
+                case "1": Shop_Buy(); goto notvalid;
+                case "2": Shop_Sell(); goto notvalid;
+                default: NotValid = true; goto notvalid;
             }
         }
 
@@ -74,13 +64,11 @@ namespace SpartaDungeon
             Console.WriteLine("[보유 골드]");
             Console.WriteLine("{0} G\n", Program.data.GetGold());
             Console.WriteLine("[아이템 목록]");
-            int idx = 1;
+
             foreach (item i in Program.Items)
-            {
-                Console.WriteLine("- {0} {1}  | {2} +{3}  | {4}  |  {5}", idx, i.name, i.type == 0 ? "방어력" : "공격력", i.value, i.description, i.purchased ? "구매완료" : i.price + " G");
-                idx++;
-            }
+                Console.WriteLine("- {0} {1}  | {2} +{3}  | {4}  |  {5}", i.index+1, i.name, i.type == 0 ? "방어력" : "공격력", i.value, i.description, i.purchased ? "구매완료" : i.price + " G");
             Console.WriteLine("\n 0. 나가기\n");
+
             if (NotValid)
             {
                 Console.WriteLine("잘못된 입력입니다.");
@@ -98,10 +86,10 @@ namespace SpartaDungeon
             }
             Console.Write("원하시는 행동을 입력해주세요 : ");
             string Sel = Console.ReadLine();
-            int Sel_idx;
+
             if (Sel == "0")
                 return;
-            else if (int.TryParse(Sel, out Sel_idx) && Sel_idx > 0 && Sel_idx < Program.Items.Length+1)
+            else if (int.TryParse(Sel, out int Sel_idx) && Sel_idx > 0 && Sel_idx < Program.Items.Length+1)
             {
                 if (!Program.Items[Sel_idx-1].purchased && Program.data.GetGold() >= Program.Items[Sel_idx-1].price)
                 {
@@ -138,7 +126,10 @@ namespace SpartaDungeon
             Console.WriteLine("[보유 골드]");
             Console.WriteLine("{0} G\n", Program.data.GetGold());
             Console.WriteLine("[아이템 목록]");
+
+            //idx는 판매 메뉴의 번호 입력을 위한 변수
             int idx = 1;
+
             foreach (item i in Program.Items)
             {
                 if (i.purchased)

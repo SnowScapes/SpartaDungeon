@@ -64,6 +64,8 @@ namespace SpartaDungeon
             
             int reward = 0;
             int usedHP;
+            //매개변수로 들어온 Rank에 따라 난이도별 보상 적용
+            //던전 실패시에 Rank는 0으로 되어 default로 가서 iffail 부터 재생
             switch(Rank)
             {
                 case 1: reward = 1000;break;
@@ -71,9 +73,14 @@ namespace SpartaDungeon
                 case 3: reward = 2500;break;
                 default: reward = 0; usedHP = Program.data.GetHp()/2; goto iffail;
             }
+            //던전 클리어 성공 시 결과 계산
             usedHP = rand.Next(20, 36) - (Program.data.GetTotalDef()- _required_def);
             reward += reward * (rand.Next((int)Program.data.GetTotalAtk(),(int)(Program.data.GetTotalAtk()*2+1))) / 100;
+            
+            //레벨업을 위한 클리어카운트 증가
             Program.data.ClearCount();
+
+            //던전 실패 시 이 지점에서부터 시작
             iffail:
             Console.WriteLine("[탐험 결과]");
             Console.WriteLine("체력 {0} -> {1}", Program.data.GetHp(), Program.data.GetHp()-usedHP);

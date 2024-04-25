@@ -3,12 +3,12 @@ namespace SpartaDungeon
 {
     internal class Program
     {
-        public static SavdLoad savedata = new SavdLoad();
         public static PlayerData data = new PlayerData();
         public static item[] Items;
         static void Main(string[] args)
         {
             //각 페이지 클래스 불러오기
+            SaveLoad savedata = new SaveLoad();
             Status stat = new Status();
             Inventory inven = new Inventory();
             Shop shop = new Shop();

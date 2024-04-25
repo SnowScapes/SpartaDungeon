@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace SpartaDungeon
 {
-    internal class SavdLoad
+    internal class SaveLoad
     {
         public bool Save()
         {
