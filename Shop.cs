@@ -11,7 +11,7 @@ namespace SpartaDungeon
     {
         bool NotValid = false;
         bool purchase = false;
-        public bool ShowShop()
+        public void ShowShop()
         {
         notvalid:
             Console.Clear();
@@ -44,20 +44,16 @@ namespace SpartaDungeon
             Console.Write("원하시는 행동을 입력해주세요 : ");
             string sel = Console.ReadLine();
             if (sel == "0")
-                return true;
+                return;
             else if (sel == "1")
             {
-                if (Shop_Buy())
-                    goto notvalid;
-                else
-                    return false;
+                Shop_Buy();
+                goto notvalid;
             }
             else if (sel == "2")
             {
-                if (Shop_Sell())
-                    goto notvalid;
-                else
-                    return false;
+                Shop_Sell();
+                goto notvalid;
             }
             else
             {
@@ -66,7 +62,7 @@ namespace SpartaDungeon
             }
         }
 
-        private bool Shop_Buy()
+        private void Shop_Buy()
         {
             bool NotValid = false;
             bool Fail = false;
@@ -104,9 +100,7 @@ namespace SpartaDungeon
             string Sel = Console.ReadLine();
             int Sel_idx;
             if (Sel == "0")
-            {
-                return true;
-            }
+                return;
             else if (int.TryParse(Sel, out Sel_idx) && Sel_idx > 0 && Sel_idx < Program.Items.Length+1)
             {
                 if (!Program.Items[Sel_idx-1].purchased && Program.data.GetGold() >= Program.Items[Sel_idx-1].price)
@@ -125,7 +119,6 @@ namespace SpartaDungeon
                     purchased = true;
                     goto notvalid;
                 }
-                return true;
             }
             else
             {
@@ -134,7 +127,7 @@ namespace SpartaDungeon
             }
         }
 
-        private bool Shop_Sell()
+        private void Shop_Sell()
         {
             item[] aval_item = new item[6];
             bool NotValid = false;
@@ -166,14 +159,9 @@ namespace SpartaDungeon
             Console.Write("원하시는 행동을 입력해주세요 : ");
             string Sel = Console.ReadLine();
             if (Sel == "0")
-            {
-                return true;
-            }
+                return;
             else if (int.TryParse(Sel, out int result) && result > 0 && result <= idx)
-            {
                 Program.data.SellItem(ref Program.Items[aval_item[result - 1].index]);
-                return true;
-            }
             else
             {
                 NotValid = true;

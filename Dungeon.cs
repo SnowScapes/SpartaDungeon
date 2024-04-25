@@ -9,7 +9,7 @@ namespace SpartaDungeon
     internal class Dungeon
     {
         Random rand = new Random();
-        public bool Select_Dungeon()
+        public void Select_Dungeon()
         {
             repeat:
             Console.Clear();
@@ -26,11 +26,10 @@ namespace SpartaDungeon
                 if (_out >= 1 && _out <= 3)
                     Dungeon_Play(_out);
                 else if (_out == 0)
-                    return true;
+                    return;
             }
             else
                 goto repeat;
-            return true;
         }
 
         void Dungeon_Play(int Rank)

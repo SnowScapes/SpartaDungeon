@@ -10,8 +10,11 @@ namespace SpartaDungeon
     internal class Status
     {
         bool NotValid = false;
-        public bool ShowStatus()
+        public void ShowStatus()
         {
+            //캐릭터 정보표시 화면
+            //잘못된 입력이 들어올 시 화면 재출력 + 잘못된 입력 텍스트 출력
+
             notvalid:
             Console.Clear();
             Console.WriteLine("상태보기");
@@ -29,9 +32,7 @@ namespace SpartaDungeon
                 NotValid = false;
             }
             Console.Write("원하시는 행동을 입력해주세요 : ");
-            if (Console.ReadLine() == "0")
-                return true;
-            else
+            if (Console.ReadLine() != "0")
             {
                 NotValid = true;
                 goto notvalid;

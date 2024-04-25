@@ -8,7 +8,8 @@ namespace SpartaDungeon
 {
     internal class Inventory
     {
-        public bool ShowInventory()
+        //인벤토리 확인 페이지
+        public void ShowInventory()
         {
             bool NotValid = false;
         notvalid:
@@ -37,23 +38,16 @@ namespace SpartaDungeon
                 NotValid = false;
             }
             Console.Write("원하시는 행동을 입력해주세요 : ");
-            string sel = Console.ReadLine();
-            if (sel == "0")
-                return true;
-            else if (sel == "1")
+            switch (Console.ReadLine())
             {
-                if (Equip_Item())
-                    goto notvalid;
-                return false;
-            }
-            else
-            {
-                NotValid = true;
-                goto notvalid;
+                case "0": break;
+                case "1":Equip_Item(); goto notvalid;
+                default: NotValid = true; goto notvalid;
             }
         }
 
-        private bool Equip_Item()
+        //아이템 장착 페이지
+        private void Equip_Item()
         {
             item[] aval_item = new item[6];
             bool Notvalid = false;
@@ -83,11 +77,9 @@ namespace SpartaDungeon
             Console.Write("원하시는 행동을 입력해주세요 : ");
             string sel = Console.ReadLine();
             if (sel == "0")
-                return true;
-            else if (int.TryParse(sel, out int result) && result > 0 && result <= idx) {
+                return;
+            if (int.TryParse(sel, out int result) && result > 0 && result <= idx)
                 Program.data.ManageItem(aval_item[result - 1]);
-                return true;
-            }
             else
             {
                 Notvalid = true;
