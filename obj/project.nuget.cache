@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "A8HKDB+pLr0qTFnLYByg0TrYNNij8irGcr5PxqPhR7ZbPOE8NiB6Adc6N15rH3I7J5LnbZ6hXcjvG93HTy462A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\siwon\\source\\repos\\SpartaDungeon\\SpartaDungeon.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\siwon\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

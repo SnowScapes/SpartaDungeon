@@ -1,0 +1,11 @@
+{
+  "name": "Chad",
+  "Level": 1,
+  "Job": "전사",
+  "ATK": 10.0,
+  "DEF": 5,
+  "HP": 100,
+  "Gold": 1500,
+  "Armor": null,
+  "Weapon": null
+}
